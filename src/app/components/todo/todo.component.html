@@ -1,0 +1,10 @@
+<mat-list-item [class.complete]="toDo?.status">
+  <mat-checkbox
+    [checked]="toDo.status"
+    (change)="this.completeChange.emit($event)"
+    >{{ toDo?.name }}</mat-checkbox
+  >
+  <button mat-icon-button color="error" (click)="this.deleteChange.emit(toDo)">
+    <mat-icon>delete_forever</mat-icon>
+  </button>
+</mat-list-item>
