@@ -32,6 +32,9 @@
               Add To Do
             </button>
           </div>
+          Please check console for errors.
+          This is harcoded Cat Fact: <br> 
+          {{completeCats2 | json}}
         </mat-card-content>
       </mat-card>
 
@@ -44,7 +47,9 @@
             [toDos]="completeToDos"
             (toDoChange)="onIncompleteToDo($event)"
             (toDoDelete)="onDeleteToDo($event, false)"
-          ></app-todo-list>
+          ></app-todo-list> 
+          Cat Fact from API(http://api.mycraftcave.com/catfact) will show here >>>>>>>>>>> <br>
+          {{completeCats | json}}
         </mat-card-content>
       </mat-card>
     </div>

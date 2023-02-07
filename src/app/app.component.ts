@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from './models/Todo';
+import { Cat } from './models/Cat';
 
 import { TodoService } from './services/todo.service';
 
@@ -11,8 +12,16 @@ import { TodoService } from './services/todo.service';
 export class AppComponent implements OnInit {
   completeToDos: Todo[] = [];
   incompleteToDos: Todo[] = [];
+  completeCats: Cat[] = [];
+  completeCats2: Cat[] = [
+    {
+      "fact":"Unlike humans, cats do not need to blink their eyes on a regular basis to keep their eyes lubricated.",
+      "length":101
+    }];
+  incompleteCats: Cat[] = [];
 
   private _toDo: Partial<Todo>;
+  private  _cat: Partial<Todo>;
 
   constructor(private todoService: TodoService) {}
 
@@ -21,6 +30,13 @@ export class AppComponent implements OnInit {
       this.completeToDos = todos.filter((todo) => todo.status);
       this.incompleteToDos = todos.filter((todo) => !todo.status);
     });
+
+    this.todoService.getCatService().subscribe((cats) => {
+      this.completeCats = cats;
+    });
+    console.log(this.incompleteCats);
+    console.log(this.completeCats);
+    console.log(this.completeCats2);
   }
 
   addToDo() {
