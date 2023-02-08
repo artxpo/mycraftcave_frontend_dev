@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  baseUrl: 'http://api.mycraftcave.com'
+  baseUrl: 'https://api.mycraftcave.com'
 };
