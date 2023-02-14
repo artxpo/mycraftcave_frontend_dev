@@ -1,0 +1,13 @@
+
+mat-card {
+  max-width: 800px;
+  margin: 2em auto;
+  text-align: center;
+  background-image: url("/assets/images/white-arabic.avif");
+  border-radius: 25px;
+padding: 20px;
+}
+#title
+{
+text-align: left;
+}

@@ -1,0 +1,163 @@
+<!-- <div id="container">
+    <div id="loginbody">
+<div class="d-lg-flex half" >
+    <div class="contents order-1 order-md-2" style="width: 400px; height: 850px; ">
+
+      
+        <div class="row align-items-center justify-content-center" >
+          <div class="col-md-10">
+            <div class="mb-4">
+              <h2 id="title">Join MyCraft Caves</h2>
+              <img src=""/>
+              <p class="mb-4">Change Profile Picture</p>
+            </div>
+            <form  formGroup="profileform" style="height: 100px;">
+              <div class=" form-group col-md-14">
+                
+                <input type="text" class="form-control" id="firstname" [value]="socialUser.firstName" placeholder="Firstname">
+
+              </div>
+              <div class="form-group col-md-14">
+                
+                <input type="text" class="form-control" id="lastname" [value]="socialUser.lastName" placeholder="Lastname">
+                
+              </div>
+              <div class="form-group col-md-14">
+                
+                <input type="text" class="form-control" id="profession"  placeholder="Profession">
+                
+              </div>
+              <div class="form-group col-md-14">
+                
+                <input type="text" class="form-control" id="mobileno"  placeholder="Mobile Number">
+                
+              </div>
+              <div class="form-group col-md-14">
+                
+                <input type="email" class="form-control" id="email" [value]="socialUser.email" placeholder="Email Address">
+                
+              </div>
+              <div class="form-group col-md-14">
+                
+                <input type="text" class="form-control" id="website"  placeholder="Website">
+                
+              </div>
+              <div class="form-group col-md-14">
+                
+                <input type="text" class="form-control" id="twitteruser"  placeholder="Twitter User">
+                
+              </div>
+              <div class="form-group col-md-14">
+                
+                <input type="text" class="form-control" id="location" placeholder="Location">
+                
+              </div>
+              
+              <div class="d-flex mb-5 align-items-center">
+                <label class="control control--checkbox mb-0"><span class="caption">I would like to be profile Public</span>
+                  <input type="checkbox" checked="checked"/>
+                  <div class="control__indicator"></div>
+                </label>
+                <label class="control control--checkbox mb-0"><span class="caption">I would like to be profile Public</span>
+                    <input type="checkbox" checked="checked"/>
+                    <div class="control__indicator"></div>
+                  </label>
+                <span class="ml-auto"><a href="#" class="forgot-pass">Password Change</a></span> 
+              </div>
+              <input type="submit" value="Update Profile" routerLink="/profile" class="btn btn-block btn-dark">
+              
+            </form>
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="bg order-2 order-md-1" style="width: 400px; height: 850px; background-image: url('/assets/images/Rectangle587.jpg');"></div>
+</div>
+  </div>
+</div>
+ -->
+
+ <mat-card>
+  <table mat-table  class="mattable">
+     <tr><td>
+      <div  style="width: 400px; height: 750px; background-image: url('/assets/images/Rectangle587.jpg');"></div>
+
+</td>
+<td>
+    <mat-card-content >
+      <div style="width: 400px; height: 750px;" >
+        <div class="col-md-10">
+          <div class="mb-4" *ngFor="let pic of profilepic">
+            <h2 id="title"><u>Join MyCraft Caves</u></h2>
+            <img src = {{pic}} />
+            <p class="mb-4" id="title">Change Profile Picture</p>
+          </div>
+          <form  formGroup="profileform" style="height: 100px;">
+            <div class=" form-group col-md-14">
+              
+              <input type="text" class="form-control" id="firstname" [value]="socialUser.firstName" placeholder="Firstname">
+
+            </div>
+            <div class="form-group col-md-14">
+              
+              <input type="text" class="form-control" id="lastname" [value]="socialUser.lastName" placeholder="Lastname">
+              
+            </div>
+            <div class="form-group col-md-14">
+              
+              <input type="text" class="form-control" id="profession"  placeholder="Profession">
+              
+            </div>
+            <div class="form-group col-md-14">
+              
+              <input type="text" class="form-control" id="mobileno"  placeholder="Mobile Number">
+              
+            </div>
+            <div class="form-group col-md-14">
+              
+              <input type="email" class="form-control" id="email" [value]="socialUser.email" placeholder="Email Address">
+              
+            </div>
+            <div class="form-group col-md-14">
+              
+              <input type="text" class="form-control" id="website"  placeholder="Website">
+              
+            </div>
+            <div class="form-group col-md-14">
+              
+              <input type="text" class="form-control" id="twitteruser"  placeholder="Twitter User">
+              
+            </div>
+            <div class="form-group col-md-14">
+              
+              <input type="text" class="form-control" id="location" placeholder="Location">
+              
+            </div>
+            
+            <div class="d-flex mb-5 align-items-center">
+              <label class="control control--checkbox mb-0"><span class="caption">I would like to be profile Public</span>
+                <input type="checkbox" checked="checked"/>
+                <div class="control__indicator"></div>
+              </label>
+              <label class="control control--checkbox mb-0"><span class="caption">I would like to be profile Public</span>
+                  <input type="checkbox" checked="checked"/>
+                  <div class="control__indicator"></div>
+                </label>
+              <span class="ml-auto"><a href="#" class="forgot-pass">Password Change</a></span> 
+            </div>
+            <input type="submit" value="Update Profile" routerLink="/profile" class="btn btn-block btn-dark">
+            
+          </form>
+          
+        </div>
+      
+        </div>
+  
+        </mat-card-content>
+      </td>
+      </tr>
+      </table>
+  </mat-card>
+  
+  

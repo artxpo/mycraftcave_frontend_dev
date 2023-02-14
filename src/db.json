@@ -1,0 +1,34 @@
+{
+    "posts":[
+        {
+            "id":1,
+            "firstname":"John",
+            "lastname":"weslie",
+            "profession":"",
+            "mobileno":"9099090992",
+            "email":"test@gmail.com",
+            "password":"",
+            "website":"test.com",
+            "twitteruser":"test123/twitter",
+            "location":"florida, londan"
+
+        },
+        {
+            "id":2,
+            "firstname":"suresh",
+            "lastname":"raj",
+            "profession":"",
+            "mobileno":"9099090992",
+            "email":"test123@gmail.com",
+            "password":"",
+            "website":"test.com",
+            "twitteruser":"test123/twitter",
+            "location":"florida, londan"
+
+        }
+],
+    "signup":[],
+    "profile":{
+        "name":"FakeBackendCode"
+    }
+}

@@ -3,18 +3,30 @@ import { Todo } from './models/Todo';
 
 import { TodoService } from './services/todo.service';
 
+import { AccountService } from './services/accountservice.service';
+import { Account } from './models/account';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  title = 'My Craft Cave';
+  isAuthenticated!: boolean;
+
+  
+  account: Account;
+
   completeToDos: Todo[] = [];
   incompleteToDos: Todo[] = [];
 
   private _toDo: Partial<Todo>;
 
-  constructor(private todoService: TodoService) {}
+  constructor(private todoService: TodoService, private accountService:AccountService) 
+  {
+    this.accountService.account.subscribe(x => this.account = x);
+  }
 
   ngOnInit() {
     this.todoService.getAll().subscribe((todos) => {
@@ -77,4 +89,7 @@ export class AppComponent implements OnInit {
     const updatedTodo: Todo = { ...todo, status: false };
     this.updateTodo(updatedTodo, false);
   }
+  logout() {
+    this.accountService.logout();
+}
 }
