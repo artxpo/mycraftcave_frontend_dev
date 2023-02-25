@@ -1,19 +1,19 @@
-<div >
+
+
  <mat-card>
   <table mat-table  class="mattable">
-     <tr><td>
-      <div  style="width: 400px; height: 750px; background-image: url('/assets/images/Rectangle587.jpg');"></div>
-
+     <tr>
+      <td mat-cell>
+      
+<img id="bnrimg" src="/assets/images/Rectangle587.jpg">
 </td>
-<td>
-    <mat-card-content >
-      <div style="width: 400px; height: 750px;" >
-          <div class="col-md-10">
-            <div class="mb-4">
+<td mat-cell>
+  <div id="logincnt">
+    <div class="mb-3">
               <h2 id="title"><u>Login</u></h2>
-              <p class="mb-4">Log in and access your account</p>
             </div>
-            <form action="#" method="post" style="height: 100px;">
+           
+              <p class="mb-4">Log in and access your account</p>
                 <div class="col-md-20">
                   <button (click)="signInWithFB()" type="button" class="col-md-12 btn btn-outline-primary">
                     <span><mat-icon>facebook</mat-icon></span>Continue as facebook
@@ -23,12 +23,13 @@
                       <span><mat-icon>Google</mat-icon></span> Continue as Google
                     </button>
                     <span><br></span>
-                    <button (click)="loginWithTwitter()" type="button" class="col-md-12 btn btn-outline-secondary">
+                    <!-- <button (click)="loginWithTwitter()" type="button" class="col-md-12 btn btn-outline-secondary">
                       <span><mat-icon>applet</mat-icon></span> Continue as apple
-                    </button>
+                    </button> -->
                   </div>
                   <span class="d-block text-center my-4 text-muted">-------------------<b> &nbsp;&nbsp;or &nbsp;&nbsp;</b>-------------------</span>
-              <div class="form-group first">
+            <form action="#" method="post" >
+                  <div class="form-group first">
                 
                 <input type="text" class="form-control" id="username" placeholder="Enter your Email Address">
 
@@ -46,25 +47,22 @@
                 </label>
                 <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
               </div>
-              <input type="submit" value="Log In" routerLink="/profile" class="btn btn-block btn-dark">
-              
-              <div id="para">
-                <p>Not a member yet ? <a href="#">Create an account</a> </p>
-                  </div>
-              <div id="para">
-                <p>By clicking Sign in or Continue with Google, Facebook , or Apple, you agree to MyCraft Caves Terms of Use and Privacy Policy. MyCraft Caves may send you communications, you may change your preferences in your account settings. We'll never post without your permission.</p>
-              </div>
-            </form>
+              <button value="Log In" class="btn btn-block btn-dark">Log In</button>
             
-          </div>
+              
+          
+          <div id="para">
+            <p>Not a member yet ? <a href="#">Create an account</a> </p>
+              </div>
+          <div id="para">
+            <p>By clicking Sign in or Continue with Google, Facebook , or Apple, you agree to MyCraft Caves Terms of Use and Privacy Policy. MyCraft Caves may send you communications, you may change your preferences in your account settings. We'll never post without your permission.</p>
+          
+          </div></form>
         </div>
-  
-        </mat-card-content>
+          
       </td>
       </tr>
       </table>
   </mat-card>
-</div>
-<app-profile *ngIf="isLoggedin === true"></app-profile>
   
   

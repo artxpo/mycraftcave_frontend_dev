@@ -5,6 +5,8 @@ import { TodoService } from './services/todo.service';
 
 import { AccountService } from './services/accountservice.service';
 import { Account } from './models/account';
+import { SocialAuthService } from 'angularx-social-login';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +25,11 @@ export class AppComponent implements OnInit {
 
   private _toDo: Partial<Todo>;
 
-  constructor(private todoService: TodoService, private accountService:AccountService) 
+  constructor(private todoService: TodoService, 
+    private accountService:AccountService,
+    private socialAuth:SocialAuthService,
+    private route: Router
+    ) 
   {
     this.accountService.account.subscribe(x => this.account = x);
   }
@@ -90,6 +96,7 @@ export class AppComponent implements OnInit {
     this.updateTodo(updatedTodo, false);
   }
   logout() {
-    this.accountService.logout();
+    this.socialAuth.signOut();
+    this.route.navigateByUrl("login");
 }
 }

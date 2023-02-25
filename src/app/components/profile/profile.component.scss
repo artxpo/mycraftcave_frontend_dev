@@ -3,14 +3,14 @@
 mat-card {
   max-width: 630px;
   margin: 2em auto;
- 
+  // text-align: center;
   background-image: url("/assets/images/white-arabic.avif");
   border-radius: 20px;
 }
 #bnrimg
 {
   width: 300px;
-  height: 620px;
+  height: 790px;
 }
 // mat-cell
 // {
@@ -19,11 +19,21 @@ mat-card {
 // }
 #logincnt
 {
-  margin: 2px;
+  margin: 3px;
   width: 300px;
-  height: 600px;
+  height: 790px;
 }
 #title
+{
+  text-align: left;
+  color: rgb(4, 52, 142);
+}
+.avator
+{
+  
+  border-radius: 50%;
+}
+#inst
 {
   text-align: left;
 }

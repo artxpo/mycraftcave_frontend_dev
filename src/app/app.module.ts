@@ -92,7 +92,7 @@ NavbarComponent
         },
         {
           id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider('1793834764407090'),
+          provider: new FacebookLoginProvider('1225350731442831'),
         },
       ],
       onError: (err) => {
