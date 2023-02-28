@@ -7,6 +7,7 @@ import { AccountService } from './services/accountservice.service';
 import { Account } from './models/account';
 import { SocialAuthService } from 'angularx-social-login';
 import { Router } from '@angular/router';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'My Craft Cave';
   isAuthenticated!: boolean;
-
+  user: User;
   
   account: Account;
 
@@ -31,7 +32,7 @@ export class AppComponent implements OnInit {
     private route: Router
     ) 
   {
-    this.accountService.account.subscribe(x => this.account = x);
+    this.accountService.user.subscribe(x => this.user = x);
   }
 
   ngOnInit() {

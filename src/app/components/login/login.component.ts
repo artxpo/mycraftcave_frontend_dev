@@ -1,30 +1,68 @@
 import { Input, Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { SocialAuthService } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 import { SocialUser } from 'angularx-social-login/public-api';
-import { Router } from '@angular/router';
+
 import { AccountService } from 'src/app/services/accountservice.service';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { first } from 'rxjs/operators';
+import { AlertService } from 'src/app/services/alert.service';
+import { GoogleAuthService } from 'src/app/services/google.service';
+
+
 
 declare var google:any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  providers: [GoogleAuthService]
 })
 
 export class LoginComponent implements OnInit {
   public userData;
-  form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-  });
-  constructor(private authService: SocialAuthService, private route:Router, private accountService: AccountService) { 
+  
+  imageURL  : string;
+  email : string;
+  name  : string; 
+  token  : string;
+  @Output() onSigninSuccess = new EventEmitter();
+  @Input() clientId: string;
+  
+  
+  
+  form: FormGroup;
+    loading = false;
+    submitted = false;
+
+  constructor(
+    private authService:SocialAuthService,
+    private formBuilder: FormBuilder,
+        private route: ActivatedRoute,
+        private router: Router,
+        private accountService: AccountService,
+        private alertService: AlertService,
+        private auth: GoogleAuthService
+      ) { 
     
   }
 
   ngOnInit(): void {
-    
+    this.form = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+  });
+
+
+  // google.accounts.id.initialize({
+  //   client_id: 'your_client_id',
+  //   callback: this.handleCredentialResponse
+  // });
+  
+  // google.accounts.id.prompt();
+  
     
   }
   
@@ -38,7 +76,7 @@ export class LoginComponent implements OnInit {
       this.authService.signIn(FacebookLoginProvider.PROVIDER_ID)
       .then((userData) => {
         localStorage.setItem('userData', JSON.stringify(this.userData));
-          this.route.navigateByUrl("profile");
+          this.router.navigateByUrl("profile");
        
       });
 
@@ -46,15 +84,45 @@ export class LoginComponent implements OnInit {
 
   
   loginWithGoogle(): void{
-    
-  //   google.accounts.id.initialize({
-  //     client_id: '92446788325-5aok28rgqubftmt159m7skrg2mh829he.apps.googleusercontent.com',
-  //     callback: this.handleCredentialResponse
-      
-  //   });
-  //   google.accounts.id.prompt();
-    
+    // this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
+    //   .then((userData) => {
+    //     localStorage.setItem('userData', JSON.stringify(this.userData));
+    //       this.router.navigateByUrl("profile");
+       
+    //   });
+    this.auth.authenticateUser(this.clientId, this.onSigninSuccess);
+
+    //this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+
   }
-// loginWithTwitter(){}
+
+  get f() { return this.form.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // reset alerts on submit
+    this.alertService.clear();
+
+    // stop here if form is invalid
+    if (this.form.invalid) {
+        return;
+    }
+
+    this.loading = true;
+    this.accountService.login(this.f.username.value, this.f.password.value)
+        .pipe(first())
+        .subscribe({
+            next: () => {
+                // get return url from query parameters or default to home page
+                const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+                this.router.navigateByUrl(returnUrl);
+            },
+            error: error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        });
+}
 
         }
