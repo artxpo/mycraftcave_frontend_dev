@@ -113,7 +113,7 @@ AlertComponent
         },
         {
           id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider('1225350731442831'),
+          provider: new FacebookLoginProvider('206832461999504'),
         },
       ],
       onError: (err) => {
